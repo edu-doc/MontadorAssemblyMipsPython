@@ -1,4 +1,45 @@
-# Mapeamento dos registradores em binário
+functionsR = {
+    "sll": "000000",
+    "srl": "000010",
+    "jr": "001000",
+    "mfhi": "010000",
+    "mflo": "010010",
+    "mult": "011000",
+    "multu": "011001",
+    "div": "011010",
+    "divu": "011011",
+    "add": "100000",
+    "addu": "100001",
+    "sub": "100010",
+    "subu": "100011",
+    "and": "100100",
+    "or": "100101",
+    "slt": "101010",
+    "sltu": "101011",
+    "mul": "000010",
+}
+
+opcodeR = {
+    "sll": "000000",
+    "srl": "000000",
+    "jr": "000000",
+    "mfhi": "000000",
+    "mflo": "000000",
+    "mult": "000000",
+    "multu": "000000",
+    "div": "000000",
+    "divu": "000000",
+    "add": "000000",
+    "addu": "000000",
+    "sub": "000000",
+    "subu": "000000",
+    "and": "000000",
+    "or": "000000",
+    "slt": "000000",
+    "sltu": "000000",
+    "mul": "011100",
+}
+
 reg = {
     "$zero": "00000",
     "$at": "00001",
@@ -34,85 +75,72 @@ reg = {
     "$ra": "11111",
 }
 
-# Mapeamento de opcode tipo R para códigos binários
-opcodeR = {
-    "sll": "000000",
-    "srl": "000000",
-    "jr": "000000",
-    "mfhi": "000000",
-    "mflo": "000000",
-    "mult": "000000",
-    "multu": "000000",
-    "div": "000000",
-    "divu": "000000",
-    "add": "000000",
-    "addu": "000000",
-    "sub": "000000",
-    "subu": "000000",
-    "and": "000000",
-    "or": "000000",
-    "slt": "000000",
-    "sltu": "000000",
-    "mul": "011100",
-}
+vetorR = ["sll", "srl", "jr", "mfhi", "mflo", "mult", "multu", "div", "divu", "add", "addu", "sub", "subu", "and", "or", "slt", "sltu", "mul"];
+vetorL = ["beq", "bne", "addi", "addiu", "slti", "sltiu", "andi", "ori", "lui", "lw", "sw"]
+vetorJ = ["j", "jal"]
 
-# Mapeamento de functions tipo R para códigos binários
-functionsR = {
-    "sll": "000000",
-    "srl": "000010",
-    "jr": "001000",
-    "mfhi": "010000",
-    "mflo": "010010",
-    "mult": "011000",
-    "multu": "011001",
-    "div": "011010",
-    "divu": "011011",
-    "add": "100000",
-    "addu": "100001",
-    "sub": "100010",
-    "subu": "100011",
-    "and": "100100",
-    "or": "100101",
-    "slt": "101010",
-    "sltu": "101011",
-    "mul": "000010",
-}
+vetR = ["sll", "srl"];
+vetL = [];
+vetJ = [];
+
+vetor = [""];
 
 with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "w") as file:
-        file.write("")
+          file.write("")
 
 with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", "r") as file:
-    content = file.read()  # Lê todo o conteúdo do arquivo
-    words = content.split()  # Divide o conteúdo em palavras
+    content = file.readlines()  # Lê todo o conteúdo do arquivo
 
-for word in words:
+for linha in content:
+  palavras = linha.split()  # Divide o conteúdo em palavras
+  for palavra in palavras:
+    
+    if palavras[0] in vetorR or palavras[1] in vetorR:
 
-    valorlido = word
-
-    binario = reg.get(valorlido, "Valor não encontrado")
-
-    if(valorlido == ("sll" or "srl" or "jr" or "mfhi" or "mflo" or "mult" or "multu" or "div" or "divu" or "add" or "addu" or "sub" or "subu" or "and" or "or" or "slt" or "sltu" or "mul")):
-            
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "w") as file:
-                    file.write("")
-
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", "r") as file:
-                content = file.readlines()  # Lê todo o conteúdo do arquivo
-                
+        for palavra in palavras:
+            valorlido = palavra
             binarioop = opcodeR.get(valorlido,"")
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
-                    file.write(binarioop)
+                file.write(binarioop)
 
-            for word in words:
-                words = word.split()  # Divide o conteúdo em palavras
-                valorlido = word
+        for palavra in palavras: 
+            valorlido = palavra
+            binario = reg.get(valorlido,"")
+            vetor.append(binario)
+        
+        
 
-                binario = reg.get(valorlido,"")
+        if palavras[0] in vetR or palavras[1] in vetR: 
+
+            if len(vetor) == 6:
 
                 with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
-                    file.write(binario)
-                
-                        
+                    file.write(vetor[4])
+                    file.write(vetor[5])
+                    file.write(vetor[3])
+            
+            if len(vetor) == 5:
+                with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+                    file.write(vetor[3])
+                    file.write(vetor[4])
+                    file.write(vetor[2])
 
+    break
+      
+
+
+
+
+for palavra in palavras:
+  if palavra in vetorL:
+    vetL.append(linha)
+  break
+
+
+for palavra in palavras:
+  if palavra in vetorJ:
+    vetJ.append(linha)
+  break
+              
 
 

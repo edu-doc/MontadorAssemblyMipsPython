@@ -79,7 +79,7 @@ vetorR = ["sll", "srl", "jr", "mfhi", "mflo", "mult", "multu", "div", "divu", "a
 vetorL = ["beq", "bne", "addi", "addiu", "slti", "sltiu", "andi", "ori", "lui", "lw", "sw"]
 vetorJ = ["j", "jal"]
 
-vetR = [];
+vetR = ["sll", "srl"];
 vetL = [];
 vetJ = [];
 
@@ -95,7 +95,7 @@ for linha in content:
   palavras = linha.split()  # Divide o conteúdo em palavras
   for palavra in palavras:
     
-    if palavra in vetorR:
+    if palavras[0] in vetorR or palavras[1] in vetorR:
 
       for palavra in palavras:
         valorlido = palavra
@@ -103,39 +103,101 @@ for linha in content:
         with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
           file.write(binarioop)
       
+    if palavras[0] in vetR or palavras[1] in vetR:
+
       for palavra in palavras: 
         valorlido = palavra
         binario = reg.get(valorlido,"")
         vetor.append(binario)
-      
-      print (len(vetor))
-
+ 
       if len(vetor) == 6:
+
+        for palavra in palavras: 
+          valorlido = palavras
+
+        num = int(valorlido[4])
+        num1 = bin(num)[2:]
+        representa = num1.zfill(5)
+
+        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+          file.write(vetor[4])
+          file.write(representa)
+          file.write(vetor[3])
+        
+        for palavra in palavras:
+          valorlido = palavra
+          binario = functionsR.get(valorlido,"")
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            file.write(binario)
+
+      else:
+          
+        for palavra in palavras: 
+          valorlido = palavras
+
+        num = int(valorlido[3])
+        num1 = bin(num)[2:]
+        representa = num1.zfill(5)
+
+        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+          file.write(vetor[3])
+          file.write(representa)
+          file.write(vetor[2])
+        
+        for palavra in palavras:
+          valorlido = palavra
+          binario = functionsR.get(valorlido,"")
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            file.write(binario)
+
+      break
+
+    else:    
+      
+      for palavra in palavras: 
+        valorlido = palavra
+        binario = reg.get(valorlido,"")
+        vetor.append(binario)
+ 
+      if len(vetor) == 6:
+
         with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
           file.write(vetor[4])
           file.write(vetor[5])
           file.write(vetor[3])
-      else:
-         with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+
+        for palavra in palavras:
+          valorlido = palavra
+          binario = functionsR.get(valorlido,"")
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            file.write(binario)
+        
+      elif len(vetor) == 5:
+
+        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
           file.write(vetor[3])
           file.write(vetor[4])
           file.write(vetor[2])
-              
-      for palavra in palavras: 
-        valorlido = palavra
-        binario = reg.get(valorlido,"")
-        vetor.append(binario)
 
+        for palavra in palavras:
+          valorlido = palavra
+          binario = functionsR.get(valorlido,"")
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            file.write(binario)
+
+        break
       break
+  
+  for palavra in palavras:
+    if palavra in vetorL:
+      vetL.append(linha)
+    break    
+        
       
 
 
 
 
-for palavra in palavras:
-  if palavra in vetorL:
-    vetL.append(linha)
-  break
 
 
 for palavra in palavras:
