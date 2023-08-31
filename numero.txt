@@ -1,1 +1,10 @@
-add $t0 $s1 $s2
+mfhi $t1
+beq $s2
+L1: mfhi $t1
+add $t1 $s1 $s2
+L2: sub $t1 $s3 $s4
+L3: jr $t1
+jr $t1
+mul $t1 $s3 $s4
+L4: mul $t1 $s3 $s4
+beq $s4
