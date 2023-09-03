@@ -15,7 +15,7 @@ e devolver como saída um arquivo de texto com programa equivalente em linguagem
 # Como executar o projeto
 
 ## Back end
-Pré-requisitos: Python
+Pré-requisitos: Python,
                 MARS MIPS simulator
 
 ```bash
