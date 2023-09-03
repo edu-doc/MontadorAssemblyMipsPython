@@ -16,7 +16,7 @@ e devolver como saída um arquivo de texto com programa equivalente em linguagem
 
 ## Back end
 Pré-requisitos: Python
-Pré-requisitos: MARS MIPS simulator
+                MARS MIPS simulator
 
 ```bash
 # clonar repositório
