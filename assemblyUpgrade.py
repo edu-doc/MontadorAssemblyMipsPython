@@ -122,8 +122,8 @@ num = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 vetor = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 
 
-#isso é pra ler o arquivo "numero.txt" (o arquivo em assembly)
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", 'r') as file:
+#isso é pra ler o arquivo "numero.asm" (o arquivo em assembly)
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.asm", 'r') as file:
         numero_linha = 1
         for linha in file:
             palavras = linha.strip().split()  # Divide a linha em palavras
@@ -134,10 +134,10 @@ with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", 'r')
                 adress[primeira_palavra] = numero_linha
             numero_linha += 1
 
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "w") as file: #Limpa o arquivo binario.txt
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "w") as file: #Limpa o arquivo binario.asm
           file.write("")
 
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", "r") as file: #Lê o arquivo numero.txt
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.asm", "r") as file: #Lê o arquivo numero.asm
     content = file.readlines()
 
 for i in range(len(content)): #Filtro para retirar as virgulas entre as instruçoes
@@ -159,7 +159,7 @@ for linha in content:
         for palavra in palavras:
           valorlido = palavra #Verifica se a palavra valorlido está contido em opcodeR 
           binarioop = opcodeR.get(valorlido,"") #se sim ele adiciona em binarioop
-          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
             file.write(binarioop)
         
         if palavras[0] in vetS or palavras[1] in vetS: #Verifica se a palavra é um caso especial tipo vetS
@@ -185,7 +185,7 @@ for linha in content:
             representa = num1.zfill(5) # Incrementa o número com zeros
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write(vetor[3])
               file.write(vetor[2])
@@ -195,10 +195,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"")
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -218,7 +218,7 @@ for linha in content:
             representa = num1.zfill(5)  # Incrementa o número com zeros
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write(vetor[2])
               file.write(vetor[1])
@@ -228,10 +228,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"")
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -261,7 +261,7 @@ for linha in content:
             representa = num1.zfill(5)  # Incrementa o número com zeros
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
               file.write("00000")
@@ -271,10 +271,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -287,7 +287,7 @@ for linha in content:
               vetor.append(binario)
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[1])
               file.write(vetor[2])
               file.write("00000")
@@ -297,10 +297,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -323,7 +323,7 @@ for linha in content:
           if nome1 == True:
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write("00000")
               file.write(vetor[2])
@@ -333,10 +333,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -349,7 +349,7 @@ for linha in content:
               vetor.append(binario)
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write("00000")
               file.write(vetor[1])
@@ -359,10 +359,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
             
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -385,7 +385,7 @@ for linha in content:
           if nome1 == True:
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[2])
               file.write("00000")
               file.write("00000")
@@ -395,10 +395,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -411,7 +411,7 @@ for linha in content:
               vetor.append(binario)
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[1])
               file.write("00000")
               file.write("00000")
@@ -421,10 +421,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
             
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -445,7 +445,7 @@ for linha in content:
           if nome1 == True:
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[3])
               file.write(vetor[4])
               file.write(vetor[2])
@@ -455,10 +455,10 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -471,7 +471,7 @@ for linha in content:
               vetor.append(binario)
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
               file.write(vetor[1])
@@ -481,11 +481,11 @@ for linha in content:
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
-              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+              with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
                 file.write(binario)
             
             
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -497,7 +497,7 @@ for linha in content:
         for palavra in palavras:
           valorlido = palavra
           binarioopL = opcodeL.get(valorlido,"") #Verifica se a palavra valorlido está contido em opcodeL se sim ele adiciona em binarioopL
-          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
             file.write(binarioopL)
         
         if palavras[0] in vetorLUI or palavras[1] in vetorLUI: #Verifica se a palavra é um caso especial tipo vetorLUI
@@ -520,13 +520,13 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write(vetor[2])
               file.write(representa)
               vetor.clear()
                 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -543,13 +543,13 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("00000")
               file.write(vetor[1])
               file.write(representa)
               vetor.clear()
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -602,13 +602,13 @@ for linha in content:
                     resultado = bit + resultado
 
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
               file.write(resultado)
               vetor.clear()
                 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -646,13 +646,13 @@ for linha in content:
                     resultado = bit + resultado
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[1])
               file.write(vetor[2])
               file.write(resultado)
               vetor.clear()
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -695,13 +695,13 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[9])
               file.write(vetor[2])
               file.write(representa)
               vetor.clear()
                 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -726,13 +726,13 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[7])
               file.write(vetor[1])
               file.write(representa)
               vetor.clear()
                 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -757,13 +757,13 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
           
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[3])
               file.write(vetor[2])
               file.write(representa)
               vetor.clear()
                 
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -780,14 +780,14 @@ for linha in content:
             representa = num1.zfill(16) # Incrementa o número com zeros
             
             # Escreve no arquivo binario
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write(vetor[2])
               file.write(vetor[1])
               file.write(representa)
               
               vetor.clear()
               
-            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+            with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
               file.write("\n")
 
             break
@@ -800,7 +800,7 @@ for linha in content:
             
           valorlido = palavra
           binarioopJ = opcodeJ.get(valorlido,"") #Verifica se a palavra valorlido está contido em opcodeJ se sim ele adiciona em binarioopJ
-          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+          with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
             file.write(binarioopJ)
       
         if palavras[1] in adress:
@@ -820,26 +820,26 @@ for linha in content:
             representa = valorfinal.zfill(26) # Incrementa o número com zeros
          
         # Escreve no arquivo binario
-        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
           file.write(representa)
           vetor.clear()
               
-        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
+        with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "a") as file:
           file.write("\n")
 
         break
 
 # Escreve no arquivo hexadecimal para limpar
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "w") as file:
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.asm", "w") as file:
       file.write("")
 
 # Escreve no arquivo hexadecimal
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "w") as file:
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.asm", "w") as file:
       file.write("v2.0 raw")
       file.write("\n")
 
 # Lê o arquivo binario
-with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "r") as file: #Lê o arquivo numero.txt
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.asm", "r") as file: #Lê o arquivo numero.asm
     texto = file.readlines()
 for i in range(len(texto)): #Filtro para retirar os \n da STRING
               texto[i] = texto[i].replace('\n', '')
@@ -848,7 +848,7 @@ for i in range(len(texto)): #Filtro para retirar os \n da STRING
 for binario in texto:
     hexadecimal = hex(int(binario, 2))  # Converter diretamente de binário para hexadecimal
     # Escreve no arquivo hexadecimal
-    with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "a") as file:
+    with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.asm", "a") as file:
       file.write(hexadecimal)
       file.write("\n")
     
