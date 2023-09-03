@@ -61,7 +61,7 @@ opcodeJ = {
 
 adress = {
 
-}
+} #Inicialização de MAP (NÃO DELETE DE MODO ALGUM!)
 
 reg = {
     "$zero": "00000",
@@ -110,7 +110,7 @@ vetorLUI = ["lui"];
 vetorW = ["sw", "lw"]
 vetorB = ["beq", "bne"]
 
-num = [""];
+num = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 
 vetor = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 
@@ -118,10 +118,10 @@ with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", 'r')
         numero_linha = 1
         for linha in file:
             palavras = linha.strip().split()  # Divide a linha em palavras
-            for i in range(len(palavras)): #Filtro para retirar as Parenteses
+            for i in range(len(palavras)): #Filtro para retirar as :
               palavras[i] = palavras[i].replace(':', '')
             if palavras:
-                primeira_palavra = palavras[0]  # Pega a primeira palavra
+                primeira_palavra = palavras[0]  
                 adress[primeira_palavra] = numero_linha
             numero_linha += 1
 
@@ -141,29 +141,29 @@ for linha in content:
   nome1 = False
   for palavra in palavras:
 
-    vetor.clear()
+    vetor.clear() # Limpa o vetor
 
     #COMEÇA AS BUSCAS DAS INSTRUÇÕES DO TIPO R ===============================================================================
     
-    if palavras[0] in vetorR or palavras[1] in vetorR:
+    if palavras[0] in vetorR or palavras[1] in vetorR: #Verifica se a palavra é um caso especial tipo vetorR
       
         for palavra in palavras:
-          valorlido = palavra
-          binarioop = opcodeR.get(valorlido,"")
+          valorlido = palavra #Verifica se a palavra valorlido está contigo em opcodeR 
+          binarioop = opcodeR.get(valorlido,"") #se sim ele adiciona em binarioop
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioop)
         
-        if palavras[0] in vetS or palavras[1] in vetS:
+        if palavras[0] in vetS or palavras[1] in vetS: #Verifica se a palavra é um caso especial tipo vetS
           
           for palavra in palavras: 
             valorlido = palavra
-            binario = reg.get(valorlido,"")
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
@@ -171,10 +171,11 @@ for linha in content:
             for palavra in palavras: 
               valorlido = palavras
             
-            num = int(valorlido[4])
-            num1 = bin(num)[2:]
-            representa = num1.zfill(5)
+            num = int(valorlido[4]) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(5) # Incrementa o número com zeros
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write(vetor[3])
@@ -197,16 +198,17 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"")
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             for palavra in palavras: 
               valorlido = palavras
 
-            num = int(valorlido[3])
-            num1 = bin(num)[2:]
-            representa = num1.zfill(5)
+            num = int(valorlido[3]) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(5)  # Incrementa o número com zeros
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write(vetor[2])
@@ -227,17 +229,17 @@ for linha in content:
 
         # PROCURANDO CASO ESPECIFICO MDU ===============================================================================
 
-        if palavras[0] in vetMDU or palavras[1] in vetMDU:
+        if palavras[0] in vetMDU or palavras[1] in vetMDU:  #Verifica se a palavra é um caso especial tipo vetMDU
           
           for palavra in palavras: 
             valorlido = palavra
-            binario = reg.get(valorlido,"")
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
@@ -245,10 +247,11 @@ for linha in content:
             for palavra in palavras: 
               valorlido = palavras
             
-            num = int(valorlido[4])
-            num1 = bin(num)[2:]
-            representa = num1.zfill(5)
+            num = int(valorlido[4]) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(5)  # Incrementa o número com zeros
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
@@ -258,7 +261,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
 
@@ -271,9 +274,10 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"")
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
               vetor.append(binario)
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[1])
               file.write(vetor[2])
@@ -283,7 +287,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
 
@@ -294,21 +298,22 @@ for linha in content:
 
         # PROCURANDO CASO ESPECIFICO MF ================================================================================
 
-        if palavras[0] in vetM or palavras[1] in vetM:
+        if palavras[0] in vetM or palavras[1] in vetM: #Verifica se a palavra é um caso especial tipo vetM
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"")
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write("00000")
@@ -318,7 +323,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -331,9 +336,10 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"")
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
               vetor.append(binario)
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write("00000")
@@ -343,7 +349,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -354,21 +360,22 @@ for linha in content:
 
           # PROCURANDO CASO ESPECIFICO JR ================================================================================
           
-        if palavras[0] in vetJR or palavras[1] in vetJR:
+        if palavras[0] in vetJR or palavras[1] in vetJR: #Verifica se a palavra é um caso especial tipo vetJR
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"")
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
             vetor.append(binario)
 
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[2])
               file.write("00000")
@@ -378,7 +385,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -391,9 +398,10 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"")
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
               vetor.append(binario)
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[1])
               file.write("00000")
@@ -403,7 +411,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -416,17 +424,18 @@ for linha in content:
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"")
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
             vetor.append(binario)
 
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[3])
               file.write(vetor[4])
@@ -436,7 +445,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -449,9 +458,10 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"")
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
               vetor.append(binario)
 
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
@@ -461,7 +471,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"")
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -473,33 +483,34 @@ for linha in content:
       
       #COMEÇA A BUSCA DAS INSTRUÇÕES DO TIPO L ==================================================================================
     
-    elif palavras[0] in vetorL or palavras[1] in vetorL: 
+    elif palavras[0] in vetorL or palavras[1] in vetorL: #Verifica se a palavra é um caso especial tipo vetorL
         
         for palavra in palavras:
           valorlido = palavra
-          binarioopL = opcodeL.get(valorlido,"")
+          binarioopL = opcodeL.get(valorlido,"") #Verifica se a palavra valorlido está contigo em opcodeL se sim ele adiciona em binarioopL
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioopL)
         
-        if palavras[0] in vetorLUI or palavras[1] in vetorLUI:
+        if palavras[0] in vetorLUI or palavras[1] in vetorLUI: #Verifica se a palavra é um caso especial tipo vetorLUI
         
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
 
-            num = int(valorlido)
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(valorlido) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write(vetor[2])
@@ -515,13 +526,14 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
-            num = int(valorlido)
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(valorlido) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write("00000")
               file.write(vetor[1])
@@ -533,38 +545,38 @@ for linha in content:
 
             break
         
-        if palavras[0] in vetorB or palavras[1] in vetorB:
+        if palavras[0] in vetorB or palavras[1] in vetorB: #Verifica se a palavra é um caso especial tipo vetorB
         
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
 
           if nome1 == True:
           
             if palavras[4] in adress:
               
-              for i in range(len(palavras)): #Filtro para retirar as Parenteses
+              for i in range(len(palavras)): #Filtro para retirar :
                 palavras[i] = palavras[i].replace(':', '')
               for palavra in palavras:
                 valorlido = palavra
-                binarioL = adress.get(valorlido,"")
+                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioL
                 vetor.append(binarioL)
               
-              numero = vetor[9]
-              numero1 = int(numero)
+              numero = vetor[9] 
+              numero1 = int(numero) #Pega o número em formato string e transforma em int
               numero1 = numero1 - 1
               numero2 = vetor[5]
-              numero3 = int(numero2)
+              numero3 = int(numero2) #Pega o número em formato string e transforma em int
               numero5 = numero2 - numero1
-              numero4 = bin(numero5)[2:]
-              representa = numero4.zfill(16)
+              numero4 = bin(numero5)[2:] # Transforma o num em binario
+              representa = numero4.zfill(16) # Incrementa o número com zeros
               
               complemento = ''.join('1' if bit == '0' else '0' for bit in representa)  # Inversão de bits
               carry = 1
@@ -580,7 +592,7 @@ for linha in content:
                 else:
                     resultado = bit + resultado
 
-                
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[2])
               file.write(vetor[3])
@@ -598,17 +610,17 @@ for linha in content:
               
               for palavra in palavras:
                 valorlido = palavra
-                binarioL = adress.get(valorlido,"")
+                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioL
                 vetor.append(binarioL)
 
               numero = vetor[7]
-              numero1 = int(numero)
+              numero1 = int(numero) #Pega o número em formato string e transforma em int
               numero1 = numero1 - 1
               numero2 = vetor[4]
-              numero3 = int(numero2)
+              numero3 = int(numero2) #Pega o número em formato string e transforma em int
               numero5 = numero3 - numero1
-              numero4 = bin(numero5)[2:]
-              representa = numero4.zfill(16)
+              numero4 = bin(numero5)[2:] # Transforma o num em binario
+              representa = numero4.zfill(16) # Incrementa o número com zeros
               
               complemento = ''.join('1' if bit == '0' else '0' for bit in representa)  # Inversão de bits
               carry = 1
@@ -624,6 +636,7 @@ for linha in content:
                 else:
                     resultado = bit + resultado
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[1])
               file.write(vetor[2])
@@ -635,21 +648,21 @@ for linha in content:
 
             break
 
-        elif palavras[0] in vetorW or palavras[1] in vetorW:
+        elif palavras[0] in vetorW or palavras[1] in vetorW: #Verifica se a palavra é um caso especial tipo vetorW
           
-          for i in range(len(palavras)): #Filtro para retirar as Parenteses
+          for i in range(len(palavras)): #Filtro para retirar os Parenteses
             palavras[i] = palavras[i].replace('(', '')
             palavras[i] = palavras[i].replace(')', '')
 
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
     
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
@@ -660,18 +673,19 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             for palavra in partes:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
-            num = int(partes[0])
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(partes[0]) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[9])
               file.write(vetor[2])
@@ -690,18 +704,19 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             for palavra in partes:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
-            num = int(partes[0])
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(partes[0]) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
             
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[7])
               file.write(vetor[1])
@@ -717,21 +732,22 @@ for linha in content:
 
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
             nome2 = len(palavra)
             nome2 = nome2 - 1
-            if palavra[nome2] == ':':
+            if palavra[nome2] == ':': #Verifica se a palavra termina com :
               nome1 = True
   
           if nome1 == True:
             
-            num = int(valorlido)
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(valorlido) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
           
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[3])
               file.write(vetor[2])
@@ -747,14 +763,14 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binarioL = reg.get(valorlido,"")
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
-            num = int(valorlido)
-            num1 = bin(num)[2:]
-            representa = num1.zfill(16)
+            num = int(valorlido) #Pega o número em formato string e transforma em int
+            num1 = bin(num)[2:] # Transforma o num em binario
+            representa = num1.zfill(16) # Incrementa o número com zeros
             
-            
+            # Escreve no arquivo binario
             with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
               file.write(vetor[2])
               file.write(vetor[1])
@@ -769,12 +785,12 @@ for linha in content:
 
     #COMEÇA A BUSCA DAS INSTRUÇÕES DO TIPO J ==================================================================================
 
-    elif palavras[0] in vetorJ:
+    elif palavras[0] in vetorJ: #Verifica se a palavra é um caso especial tipo vetorJ
 
         for palavra in palavras:
             
           valorlido = palavra
-          binarioopJ = opcodeJ.get(valorlido,"")
+          binarioopJ = opcodeJ.get(valorlido,"") #Verifica se a palavra valorlido está contigo em opcodeJ se sim ele adiciona em binarioopJ
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioopJ)
       
@@ -782,18 +798,19 @@ for linha in content:
               
             for palavra in palavras:
               valorlido = palavra
-              binarioL = adress.get(valorlido,"")
-              vetor.append(binarioL)
+              binarioJ = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioJ
+              vetor.append(binarioJ)
             
             numero = vetor[1]
-            numero1 = int(numero)
+            numero1 = int(numero) #Pega o número em formato string e transforma em int
             numero1 = numero1 - 1
-            numero4 = bin(numero1)[2:]
-            representa = numero4.zfill(20)
+            numero4 = bin(numero1)[2:] # Transforma o num em binario
+            representa = numero4.zfill(20) # Incrementa o número com zeros
             representa1 = "1" 
-            valorfinal = representa1 + representa
-            representa = valorfinal.zfill(26)
+            valorfinal = representa1 + representa # Concatena as STRINGS
+            representa = valorfinal.zfill(26) # Incrementa o número com zeros
          
+        # Escreve no arquivo binario
         with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
           file.write(representa)
           vetor.clear()
@@ -802,8 +819,32 @@ for linha in content:
           file.write("\n")
 
         break
-  
+
+# Escreve no arquivo hexadecimal para limpar
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "w") as file:
+      file.write("")
+
+# Escreve no arquivo hexadecimal
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "w") as file:
+      file.write("v2.0 raw")
+      file.write("\n")
+
+# Lê o arquivo binario
+with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "r") as file: #Lê o arquivo numero.txt
+    texto = file.readlines()
+for i in range(len(texto)): #Filtro para retirar os \n da STRING
+              texto[i] = texto[i].replace('\n', '')
+
+
+for binario in texto:
+    hexadecimal = hex(int(binario, 2))  # Converter diretamente de binário para hexadecimal
+    # Escreve no arquivo hexadecimal
+    with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/hexadecimal.txt", "a") as file:
+      file.write(hexadecimal)
+      file.write("\n")
     
+
+
     
 
     

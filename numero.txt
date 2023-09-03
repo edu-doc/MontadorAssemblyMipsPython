@@ -14,13 +14,13 @@ L2:	sub $s1, $s2, $s3
 	ori $s1, $s2, 100
 	sll $s1, $s2, 10
 	srl $s1, $s2, 10
-L4:	lw $s1, 100($s2)
-L5:	sw $s1, 100($s2)
+	lw $s1, 100($s2)
+	sw $s1, 100($s2)
 	lui $s1, 100
 	mfhi $s2
 	mflo $s2
 L3:	beq $s1, $s2, L1
-        bne $s1, $s2, L2
+ 	bne $s1, $s2, L2
 	slt $s1, $s2, $s3
 	slti $s1, $s2, 100
 	j L1
