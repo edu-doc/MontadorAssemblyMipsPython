@@ -20,19 +20,19 @@ Pré-requisitos: MARS MIPS simulator
 
 ```bash
 # clonar repositório
-git clone https://github.com/edu-doc/MontadorAssemblyMipsPython
+  git clone https://github.com/edu-doc/MontadorAssemblyMipsPython
 
 # acessar o arquivo numero.txt
-  Colocar as instruções em MIPS que você quer montar
+  colocar as instruções em MIPS que você quer montar
 
 # executar o projeto
-   assemblyUpgrade
+  assemblyUpgrade
 
 # acessar o arquivo binario.txt
-  Resposta será encontrada em binario.
+  resposta será encontrada em binario.
 
 # acessar o arquivo hexadecimal.txt
-  Resposta será encontrada em hexadecimal.
+  resposta será encontrada em hexadecimal.
 ```
 
 # Autor
