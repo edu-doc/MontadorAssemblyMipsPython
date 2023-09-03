@@ -5,7 +5,7 @@
 O Projeto é um trabalho da disciplina de Arquitetura de Computadores, onde devemos montar um montador (assembler) simples para o MIPS.
 
 De modo que a aplicação deve receber como entrada um arquivo de texto com código de montagem (assembly) do MIPS sem erros de sintaxe 
-E devolver como saída um arquivo de texto com programa equivalente em linguagem de montagem.
+e devolver como saída um arquivo de texto com programa equivalente em linguagem de montagem.
 
 # Tecnologias utilizadas
 ## Back end
