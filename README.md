@@ -1,6 +1,6 @@
 # MONTADOR ASSEMBLY
 
-# Sobre o projeto
+# 💡Sobre o projeto
 
 O Projeto é um trabalho da disciplina de Arquitetura de Computadores, onde devemos montar um montador (assembler) simples para o MIPS.
 
