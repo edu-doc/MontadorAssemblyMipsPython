@@ -1,4 +1,5 @@
-functionsR = {
+#LISTA DAS FUNÇÕES DO TIPO R
+functionsR = { 
     "sll": "000000",
     "srl": "000010",
     "jr": "001000",
@@ -19,6 +20,7 @@ functionsR = {
     "mul": "000010",
 }
 
+#LISTA DOS OPCODES DO TIPO R
 opcodeR = {
     "sll": "000000",
     "srl": "000000",
@@ -40,6 +42,7 @@ opcodeR = {
     "mul": "011100",
 }
 
+#LISTA DOS OPCODES DO TIPO L (era pra ser I mas a gnt deixou como L mesmo)
 opcodeL = {
     "beq": "000100",
     "bne": "000101",
@@ -54,6 +57,7 @@ opcodeL = {
     "sw": "101011",
 }
 
+#LISTA DOS OPCODES DO TIPO J
 opcodeJ = {
     "j": "000010",
     "jal": "000011",
@@ -63,6 +67,7 @@ adress = {
 
 } #Inicialização de MAP (NÃO DELETE DE MODO ALGUM!)
 
+#"endereços" dos registradores
 reg = {
     "$zero": "00000",
     "$at": "00001",
@@ -98,10 +103,12 @@ reg = {
     "$ra": "11111",
 }
 
+#casos para as instruções dos tipos R, L e J
 vetorR = ["sll", "srl", "jr", "mfhi", "mflo", "mult", "multu", "div", "divu", "add", "addu", "sub", "subu", "and", "or", "slt", "sltu", "mul"];
 vetorL = ["beq", "bne", "addi", "addiu", "slti", "sltiu", "andi", "ori", "lui", "lw", "sw"]
 vetorJ = ["j", "jal"]
 
+#casos especiais das instruções (as que fogem a regra)
 vetS = ["sll", "srl"];
 vetM = ["mfhi", "mflo"];
 vetJR = ["jr"];
@@ -114,6 +121,8 @@ num = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 
 vetor = [""]; #Inicialização de Vetor (NÃO DELETE DE MODO ALGUM!)
 
+
+#isso é pra ler o arquivo "numero.txt" (o arquivo em assembly)
 with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", 'r') as file:
         numero_linha = 1
         for linha in file:
@@ -131,7 +140,7 @@ with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "w"
 with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/numero.txt", "r") as file: #Lê o arquivo numero.txt
     content = file.readlines()
 
-for i in range(len(content)): #Filtro para retirar as virgulas
+for i in range(len(content)): #Filtro para retirar as virgulas entre as instruçoes
     content[i] = content[i].replace(',', '')
 
 
@@ -148,7 +157,7 @@ for linha in content:
     if palavras[0] in vetorR or palavras[1] in vetorR: #Verifica se a palavra é um caso especial tipo vetorR
       
         for palavra in palavras:
-          valorlido = palavra #Verifica se a palavra valorlido está contigo em opcodeR 
+          valorlido = palavra #Verifica se a palavra valorlido está contido em opcodeR 
           binarioop = opcodeR.get(valorlido,"") #se sim ele adiciona em binarioop
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioop)
@@ -157,7 +166,7 @@ for linha in content:
           
           for palavra in palavras: 
             valorlido = palavra
-            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
@@ -182,7 +191,7 @@ for linha in content:
               file.write(vetor[2])
               file.write(representa)
               vetor.clear()
-
+            
             for palavra in palavras:
               valorlido = palavra
               binario = functionsR.get(valorlido,"")
@@ -198,7 +207,7 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             for palavra in palavras: 
@@ -233,7 +242,7 @@ for linha in content:
           
           for palavra in palavras: 
             valorlido = palavra
-            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg, se sim, adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
@@ -261,7 +270,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
 
@@ -274,7 +283,7 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             # Escreve no arquivo binario
@@ -287,7 +296,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
 
@@ -302,7 +311,7 @@ for linha in content:
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
             vetor.append(binario)
           
           for palavra in palavras:
@@ -323,7 +332,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -336,7 +345,7 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             # Escreve no arquivo binario
@@ -349,7 +358,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -364,7 +373,7 @@ for linha in content:
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
             vetor.append(binario)
 
           for palavra in palavras:
@@ -385,7 +394,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -398,7 +407,7 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             # Escreve no arquivo binario
@@ -411,7 +420,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -424,7 +433,7 @@ for linha in content:
           
           for palavra in palavras:
             valorlido = palavra
-            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+            binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
             vetor.append(binario)
 
           for palavra in palavras:
@@ -445,7 +454,7 @@ for linha in content:
 
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
               
@@ -458,7 +467,7 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binario
+              binario = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binario
               vetor.append(binario)
 
             # Escreve no arquivo binario
@@ -471,7 +480,7 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contigo em functionsR se sim ele adiciona em binario
+              binario = functionsR.get(valorlido,"") #Verifica se a palavra valorlido está contido em functionsR se sim ele adiciona em binario
               with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
                 file.write(binario)
             
@@ -487,7 +496,7 @@ for linha in content:
         
         for palavra in palavras:
           valorlido = palavra
-          binarioopL = opcodeL.get(valorlido,"") #Verifica se a palavra valorlido está contigo em opcodeL se sim ele adiciona em binarioopL
+          binarioopL = opcodeL.get(valorlido,"") #Verifica se a palavra valorlido está contido em opcodeL se sim ele adiciona em binarioopL
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioopL)
         
@@ -495,7 +504,7 @@ for linha in content:
         
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
@@ -526,7 +535,7 @@ for linha in content:
             
             for palavra in palavras: 
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             num = int(valorlido) #Pega o número em formato string e transforma em int
@@ -549,7 +558,7 @@ for linha in content:
         
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
@@ -566,7 +575,7 @@ for linha in content:
                 palavras[i] = palavras[i].replace(':', '')
               for palavra in palavras:
                 valorlido = palavra
-                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioL
+                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contido em adress se sim ele adiciona em binarioL
                 vetor.append(binarioL)
               
               numero = vetor[9] 
@@ -610,7 +619,7 @@ for linha in content:
               
               for palavra in palavras:
                 valorlido = palavra
-                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioL
+                binarioL = adress.get(valorlido,"") #Verifica se a palavra valorlido está contido em adress se sim ele adiciona em binarioL
                 vetor.append(binarioL)
 
               numero = vetor[7]
@@ -656,7 +665,7 @@ for linha in content:
 
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
     
           for palavra in palavras:
@@ -673,12 +682,12 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             for palavra in partes:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
             num = int(partes[0]) #Pega o número em formato string e transforma em int
@@ -704,12 +713,12 @@ for linha in content:
             
             for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             for palavra in partes:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
             num = int(partes[0]) #Pega o número em formato string e transforma em int
@@ -732,7 +741,7 @@ for linha in content:
 
           for palavra in palavras:
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
 
           for palavra in palavras:
@@ -763,7 +772,7 @@ for linha in content:
 
             for palavra in palavras: 
               valorlido = palavra
-              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contigo em reg se sim ele adiciona em binarioL
+              binarioL = reg.get(valorlido,"") #Verifica se a palavra valorlido está contido em reg se sim ele adiciona em binarioL
               vetor.append(binarioL)
             
             num = int(valorlido) #Pega o número em formato string e transforma em int
@@ -790,7 +799,7 @@ for linha in content:
         for palavra in palavras:
             
           valorlido = palavra
-          binarioopJ = opcodeJ.get(valorlido,"") #Verifica se a palavra valorlido está contigo em opcodeJ se sim ele adiciona em binarioopJ
+          binarioopJ = opcodeJ.get(valorlido,"") #Verifica se a palavra valorlido está contido em opcodeJ se sim ele adiciona em binarioopJ
           with open("C:/Users/Trojan/Documents/Codificadores/Arquitetura/binario.txt", "a") as file:
             file.write(binarioopJ)
       
@@ -798,7 +807,7 @@ for linha in content:
               
             for palavra in palavras:
               valorlido = palavra
-              binarioJ = adress.get(valorlido,"") #Verifica se a palavra valorlido está contigo em adress se sim ele adiciona em binarioJ
+              binarioJ = adress.get(valorlido,"") #Verifica se a palavra valorlido está contido em adress se sim ele adiciona em binarioJ
               vetor.append(binarioJ)
             
             numero = vetor[1]
