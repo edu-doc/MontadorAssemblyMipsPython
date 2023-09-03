@@ -35,9 +35,9 @@ Pré-requisitos: Python,
   resposta será encontrada em hexadecimal.
 ```
 
-# Autor
+# Grupo
 
 Antonio Eduardo de Oliveira Carmo
 
-[https://www.linkedin.com/in/antonio-eduardo-ab5052230/]
+Eduardo Paz Vieira
 
