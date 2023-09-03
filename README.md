@@ -17,12 +17,12 @@ valor de PC e incondicionais são pseudodiretas). Seu assembler ainda deve consi
 endereço de memória inicial do programa é sempre 0x00400000. A saída gerada pode ser em 
 em hexadecimal (ou seja, cada 4 bits equivalente a 1 caracter hexa).
 
-## Fotos do Arquivo Trabalho
+## 📷Fotos do Arquivo Trabalho
 ![Web 1](https://github.com/edu-doc/MontadorAssemblyMipsPython/blob/main/fotos/pg1.png)
 ![Web 1](https://github.com/edu-doc/MontadorAssemblyMipsPython/blob/main/fotos/pg2.png)
 ![Web 1](https://github.com/edu-doc/MontadorAssemblyMipsPython/blob/main/fotos/pg3.png)
 
-# Tecnologias utilizadas
+# 💻Tecnologias utilizadas
 ## Back end
 - Python
 - MARS MIPS
@@ -50,7 +50,7 @@ Pré-requisitos: Python,
   resposta será encontrada em hexadecimal.
 ```
 
-# Grupo
+# 🐺Grupo
 
 Antonio Eduardo de Oliveira Carmo
 
