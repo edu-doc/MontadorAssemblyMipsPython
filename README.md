@@ -37,6 +37,9 @@ Pré-requisitos: Python,
 # clonar repositório
   git clone https://github.com/edu-doc/MontadorAssemblyMipsPython
 
+# modificar as localizações dos arquivos tipo asm, se não programa não irá encontra-lo
+  pegue a localização da pasta que você botou os arquivos clonados
+
 # acessar o arquivo numero.txt
   colocar as instruções em MIPS que você quer montar
 
